@@ -1,0 +1,13 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+/.quarto/
+*.html
+*_files/
+*_cache/
+.DS_Store
+.Rproj.user/
+.Rhistory/
+/*.html
+/*-speaker.html
