@@ -3,7 +3,7 @@ title: "Elevating R Markdown with Quarto"
 subtitle: useR 2024
 author: "Christophe Dervieux"
 institute: "Posit PBC"
-date: 09/07/2024
+date: 07/09/2024
 format:
   clean-revealjs:
     theme: [default, reveal-style.scss]
@@ -19,15 +19,13 @@ execute:
   cache: true
 ---
 
-# What is Quarto ?
+## What is Quarto?
 
-*Quarto is the next generation of R Markdown: it unifies and extends it !*
+*Quarto is the next generation of R Markdown*
 
-## Open-source, Scientific, and Technical Publishing System
+- it **unifies** and **improves** the R Markdown ecosystem
 
--   **unifies** and **extends** the R Markdown ecosystem
-
--   **extends** for people who don't know R Markdown
+- it **extends** it for people who don't know R Markdown
 
 ![[Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by Allison Horst.]{.small-cap}](images/horst_quarto_schematic.png){fig-alt="A schematic representing the multi-language input (e.g. Python, R, Observable, Julia) and multi-format output (e.g. PDF, html, Word documents, and more) versatility of Quarto." fig-align="center"}
 
@@ -40,13 +38,17 @@ Just like R Markdown you can weave together narrative text and code to produce e
 -   Support for other languages like Python, Julia, Observable, and more via Jupyter engine for executable code chunks.
 :::
 
-## Why Quarto ?
+## Why Quarto?
 
--   Computational Documents and Scientific Markdown made easy for Single Source Publishing
+-   [Computational Documents]{.hl} and [Scientific Markdown]{.hl} made easy for Single Source Publishing
 -   Designed from the start as [multi-engine]{.hl}
 -   An attempt to bring +10 years experience of [R Markdown to everyone]{.hl}!
 
-![D. Krishnamurthy, “Writing technical papers with Markdown and Pandoc,” Dec. 20, 2015. https://kdheepak.com/blog/writing-papers-with-markdown](images/scientific-markdown.png){.center fig-alt="xkcd styled graph of comparing learning curve for LaTeX, Word and Markdown for scientific publishing"}
+![&nbsp;](images/scientific-markdown.png){.center fig-alt="xkcd styled graph of comparing learning curve for LaTeX, Word and Markdown for scientific publishing"}
+
+::: {.attribution}
+D. Krishnamurthy, “Writing technical papers with Markdown and Pandoc,” Dec. 20, 2015. <https://kdheepak.com/blog/writing-papers-with-markdown>
+:::
 
 ::: notes
 Origins
@@ -63,17 +65,17 @@ Computational Documents
 -   Automation and reproducibility
 :::
 
-## How to use Quarto ?
+## How to use Quarto?
 
 ::: make-smaller
 Quarto is a [command line interface (CLI)]{.hl} that renders plain text formats (`.qmd`, `.rmd`, `.md`) OR mixed formats (`.ipynb`/Jupyter notebook) into static PDF/Word/HTML reports, books, websites, presentations and more.
 :::
 
-``` {.bash .make-smaller code-line-numbers="|1|4|12|17|18"}
+``` {.bash .make-smaller code-line-numbers="|1|4|17|18|21-26"}
 $ quarto --help
 
 Usage:   quarto
-Version: 1.5.52
+Version: 1.5.53
 
 Description:
 
@@ -112,7 +114,7 @@ Commands:
 
 ## How to use Quarto?
 
-Integrated in many tools!
+Quarto integrates with other tools
 
 ::: r-stack
 ![](images/screenshot-vscode-preview.png){.fragment fragment-index="1"}
@@ -128,11 +130,16 @@ Integrated in many tools!
 ![](images/rstudio-logo.png){.fragment .absolute fragment-index="3" top="0px" right="150px" width="100px"}
 :::
 
-# Does it works the same ?
+::: footer
+:::
+
+# Does it works the same ? {visibility="hidden"}
 
 ![](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjZqY3NpajV2c3NrZ2xmN2pqY2RiZ2hlaTM1bGR6N2l6eGJpZXV4NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/C6JQPEUsZUyVq/giphy.gif){.nostretch width="70%"}
 
-## Similar Workflows
+## Quarto Workflow
+
+::: {.r-vstack}
 
 ![](images/rstudio-qmd-how-it-works.png)
 
@@ -140,7 +147,12 @@ Integrated in many tools!
 
 ![](images/ipynb-how-it-works.png){.fragment}
 
-## Similar Syntax {auto-animate="true" auto-animate-easing="linear"}
+:::
+
+::: footer
+:::
+
+## Quarto Syntax {auto-animate="true" auto-animate-easing="ease-out"}
 
 Mixing Markdown content and computation cells to evaluate
 
@@ -153,6 +165,8 @@ output:
   html_document:
     toc: true
 ---
+  
+Some **Markdown** content based on _Pandoc_'s markdown
 
 ```{r species, warning=FALSE, fig.width=5, fig.cap="About penguins"}
 ggplot(penguins) + aes(
@@ -337,7 +351,7 @@ gt(temps) |>
 
 Integrated `quarto publish` command that targets a variety of services
 
-```{.bash code-line-numbers='12-18'}
+```{.bash .make-smaller code-line-numbers='12-18'}
 > quarto publish --help
 
 Usage:   quarto publish [provider] [path]
@@ -437,7 +451,7 @@ format:
 
 ## Learning More {.smaller}
 
-#### Slides: <https://cderv.github.io/raukr-2023-quarto> {.bottom-pad}
+#### Slides: <https://cderv.github.io/user2024-quarto-talk {.bottom-pad}
 
 -   Getting started: <https://quarto.org/docs/get-started/>
 
@@ -445,13 +459,4 @@ format:
 
 -   Awesome Quarto: <https://github.com/mcanouil/awesome-quarto>
 
--   rstudio::conf(2022)
-
-    -   [Keynote: Reimagine + Collaborate + Share with Quarto](https://www.rstudio.com/conference/2022/keynotes/collaborate-with-quarto/)
-    -   [Quarto for R Markdown users](https://www.rstudio.com/conference/2022/talks/quarto-for-rmarkdown-users/)
-    -   [These are a few of my favorite things (about Quarto presentations)](https://www.rstudio.com/conference/2022/talks/my-favorite-things-quarto-presentations/)
-    -   [Literate Programming With Jupyter Notebooks and Quarto](https://www.rstudio.com/conference/2022/talks/literate-programming-quarto/)
-    -   [Websites & Books & Blogs, oh my! Creating Rich Content with Quarto](https://www.rstudio.com/conference/2022/talks/sessions/quarto-deep-dive/websites-books-blogs-quarto/)
-
 #### Questions? {.top-pad}
-::::::::::::::::::::
