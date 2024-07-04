@@ -6,6 +6,8 @@ institute: "Posit PBC"
 date: 07/09/2024
 format:
   clean-revealjs:
+    width: 1280
+    height: 720
     theme: [default, reveal-style.scss]
     footer: Follow along at <https://cderv.github.io/user2024-quarto-talk/> and <https://quarto.org>
     code-line-numbers: false
@@ -13,6 +15,8 @@ format:
     mermaid-format: png
     preview-links: auto
     multiplex: true
+    include-after-body: 
+      - revealjs-tweak.html
 revealjs-plugins:
   - attribution
 execute: 
@@ -114,7 +118,7 @@ Commands:
 
 ## How to use Quarto?
 
-Quarto integrates with other tools
+Quarto integrates with other tools.
 
 ::: r-stack
 ![](images/screenshot-vscode-preview.png){.fragment fragment-index="1"}
@@ -137,9 +141,9 @@ Quarto integrates with other tools
 
 ![](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjZqY3NpajV2c3NrZ2xmN2pqY2RiZ2hlaTM1bGR6N2l6eGJpZXV4NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/C6JQPEUsZUyVq/giphy.gif){.nostretch width="70%"}
 
-## Quarto Workflow
+## Quarto Workflow {#workflow-stack}
 
-::: {.r-vstack}
+::: {.r-vstack style="max-height: 95%;"}
 
 ![](images/rstudio-qmd-how-it-works.png)
 
@@ -154,11 +158,12 @@ Quarto integrates with other tools
 
 ## Quarto Syntax {auto-animate="true" auto-animate-easing="ease-out"}
 
-Mixing Markdown content and computation cells to evaluate
-
+::: {data-id="text1"}
 From R Markdown...
+:::
 
-````{verbatim lang='markdown'}
+::: {data-id="code"}
+````{.markdown code-line-numbers="|3-5,10"}
 ---
 title: Hello penguins!
 output: 
@@ -168,36 +173,38 @@ output:
   
 Some **Markdown** content based on _Pandoc_'s markdown
 
-```{r species, warning=FALSE, fig.width=5, fig.cap="About penguins"}
-ggplot(penguins) + aes(
-  x = bill_length_mm, y = bill_depth_mm, color = species, shape = species) +
+```{{r species, fig.width=5, fig.cap="About penguins"}}
+ggplot(penguins) + aes(x = bill_length_mm, y = bill_depth_mm, color = species) +
   geom_point() + labs(x = "Bill length (mm)", y = "Bill depth (mm)")
 ```
 ````
+:::
 
-## Similar Syntax {auto-animate="true" auto-animate-easing="linear"}
+## Quarto Syntax {auto-animate="true" auto-animate-easing="ease-out"}
 
-Mixing Markdown content and computation cells to evaluate
-
+::: {data-id="text1" style="text-align: center;"}
 ... to Quarto
+:::
 
-````{verbatim lang='markdown'}
+::: {data-id="code"}
+````{.markdown code-line-numbers="|3-4|10-12"}
 ---
 title: Hello penguins!
 output: html
 toc: true
 ---
 
-```{r}
+Some **Markdown** content based on _Pandoc_'s markdown
+
+```{{r}}
 #| label: species
 #| fig-width: 5
 #| fig-cap: About penguins
-ggplot(penguins) + aes(
-  x = bill_length_mm, y = bill_depth_mm, color = species, shape = species) +
+ggplot(penguins) + aes(x = bill_length_mm, y = bill_depth_mm, color = species) +
   geom_point() + labs(x = "Bill length (mm)", y = "Bill depth (mm)")
 ```
 ````
-
+:::
 ::: notes
 For R, Quarto still uses Knitr under the hood.
 
@@ -206,7 +213,7 @@ Same workflow from Markdown +
 Consequently, ***the vast majority of existing Rmd files*** can be rendered unmodified.
 :::
 
-# Elevating R Markdown ?
+# Elevating R Markdown ? {visibility="hidden"}
 
 ![](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3hzNzg3dWZiY3c4OHc4bGZkZHBuZHI1ZGN6YnlyYnVuYnFlam85cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6MbjqM1mUsaah7W0/giphy.gif){.nostretch width="70%"}
 
@@ -235,48 +242,52 @@ Multiple fresh polished formats, built-in, with consistent syntax and features.
 |                 |                                                                                |                                                                                                      |
 |                 |                                                                                | [revealjs](https://bookdown.org/yihui/rmarkdown/revealjs.html)                                       |
 +-----------------+--------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+
-| Advanced Layout | [Quarto Article Layout](https://quarto.org/docs/authoring/article-layout.html) | [tufte](https://bookdown.org/yihui/rmarkdown/tufte-handouts.html)                                    |
-|                 |                                                                                |                                                                                                      |
-|                 |                                                                                | [distill](https://rstudio.github.io/distill/figures.html)                                            |
-+-----------------+--------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+
 
 ::: notes
 The R Markdown ecosystem was built over nearly a decade (resulting in lots of inconsistency & duplication)
 :::
 
+::: footer
+:::
+
 ## Quarto formats
 
-Multiple fresh polished formats, built-in, with consistent syntax and features.
+Multiple fresh polished formats, [built-in]{.hl}, with consistent syntax and features.
 
-+------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------+
-| Feature          | Quarto                                                                      | R Markdown                                                                   |
-+==================+=============================================================================+==============================================================================+
-| Cross References | [Quarto Crossrefs](https://quarto.org/docs/authoring/cross-references.html) | [html_document2](https://bookdown.org/yihui/bookdown/a-single-document.html) |
-|                  |                                                                             |                                                                              |
-|                  |                                                                             | [pdf_document2](https://bookdown.org/yihui/bookdown/a-single-document.html)  |
-|                  |                                                                             |                                                                              |
-|                  |                                                                             | [word_document2](https://bookdown.org/yihui/bookdown/a-single-document.html) |
-+------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------+
-| Websites & Blogs | [Quarto Websites](https://quarto.org/docs/websites/)                        | [blogdown](https://pkgs.rstudio.com/blogdown/)                               |
-|                  |                                                                             |                                                                              |
-|                  | [Quarto Blogs](https://quarto.org/docs/websites/website-blog.html)          | [distill](https://pkgs.rstudio.com/distill/)                                 |
-+------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------+
-| Books            | [Quarto Books](https://quarto.org/docs/books/)                              | [bookdown](https://pkgs.rstudio.com/bookdown/)                               |
-+------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------+
-| Interactivity    | [Quarto Interactive Documents](https://quarto.org/docs/interactive/shiny/)  | [Shiny Documents](https://bookdown.org/yihui/rmarkdown/shiny-documents.html) |
-+------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------+
-| Journal Articles | [Journal Articles](https://quarto.org/docs/journals/index.html)             | [rticles](https://pkgs.rstudio.com/rticles/)                                 |
-+------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------+
-| Dashboards       | [Quarto Dashboards](https://quarto.org/docs/dashboards/)                    | [flexdashboard](https://pkgs.rstudio.com/flexdashboard/)                     |
-+------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------+
++------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+| Feature          | Quarto                                                                        | R Markdown                                                                   |
++==================+===============================================================================+==============================================================================+
+| Cross References | [Quarto Crossrefs](https://quarto.org/docs/authoring/cross-references.html)   | [html_document2](https://bookdown.org/yihui/bookdown/a-single-document.html) |
+|                  |                                                                               |                                                                              |
+|                  |                                                                               | [pdf_document2](https://bookdown.org/yihui/bookdown/a-single-document.html)  |
+|                  |                                                                               |                                                                              |
+|                  |                                                                               | [word_document2](https://bookdown.org/yihui/bookdown/a-single-document.html) |
++------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+| Websites & Blogs | [Quarto Websites](https://quarto.org/docs/websites/)                          | [blogdown](https://pkgs.rstudio.com/blogdown/)                               |
+|                  |                                                                               |                                                                              |
+|                  | [Quarto Blogs](https://quarto.org/docs/websites/website-blog.html)            | [distill](https://pkgs.rstudio.com/distill/)                                 |
++------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+| Books            | [Quarto Books](https://quarto.org/docs/books/)                                | [bookdown](https://pkgs.rstudio.com/bookdown/)                               |
++------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+| Interactivity    | [Quarto Interactive Documents](https://quarto.org/docs/interactive/shiny/)    | [Shiny Documents](https://bookdown.org/yihui/rmarkdown/shiny-documents.html) |
++------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+| Dashboards       | [Quarto Dashboards](https://quarto.org/docs/dashboards/)                      | [flexdashboard](https://pkgs.rstudio.com/flexdashboard/)                     |
++------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+| Advanced Layout  | [Quarto Article Layout](https://quarto.org/docs/authoring/article-layout.html)| [tufte](https://bookdown.org/yihui/rmarkdown/tufte-handouts.html)            |
+|                  |                                                                               |                                                                              |
+|                  |                                                                               | [distill](https://rstudio.github.io/distill/figures.html)                    |
++------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
 
 ::: notes
 Some features requires specific R packages and specific syntax.
 :::
 
-## Focus: Theming
+::: footer
+:::
 
-Quarto themes (based on SCSS) for all HTML output formats (shared by HTML and RevealJS slides, extendable to work with anything).
+## Focus: HTML Theming
+
+[Quarto theme](https://quarto.org/docs/output-formats/html-themes.html) files are based on SCSS for all HTML output formats (shared by HTML and RevealJS slides, extendable to work with anything).
 
 Based on core variables defined by [bslib](https://rstudio.github.io/bslib/) (so fully compatible with Shiny, Flexdashboard, & R Markdown themes).
 
@@ -304,19 +315,33 @@ format:
     linkcolor: darkgrey
     theme: [litera, my-style.scss]
 ```
+
 :::
 :::::::::::::::::::: 
 
-## Focus: Typst CSS
 
-```yaml
+::: footer
+:::
+
+## Focus: Typst CSS for nice table output in PDF
+
+::: {.make-smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+New PDF rendering through Typst (<https://typst.app>)
+:::
+::: {.column width="50%"}
+```{.yaml style="margin-top:16px"}
 format: typst
 ```
+:::
+:::
 
 This is the quickest way to do PDF with already nice features ! 
 
-:::::.columns}
-::: {.column width="60%"}
+:::::{.columns}
+::: {.column width="58%"}
 ```r
 # Producing a HTML Table with CSS styles
 library(gt)
@@ -342,14 +367,25 @@ gt(temps) |>
 :::
 ::: {.column width="2%"}
 :::
-::: {.column width="30%"}
-![](images/typst-tables-gt-temps.png)
+::: {.column width="38%"}
+![Rendered in PDF with Typst](images/typst-tables-gt-temps.png)
+:::
+::: {.column width="2%"}
 :::
 :::::
 
+:::
+
+::: notes
+> HTML tables are parsed and rendered to output format, and style is kept in PDF with typst.
+:::
+
+::: footer
+:::
+
 ## Focus: Publishing
 
-Integrated `quarto publish` command that targets a variety of services
+Integrated `quarto publish` command that target a variety of services
 
 ```{.bash .make-smaller code-line-numbers='12-18'}
 > quarto publish --help
@@ -375,6 +411,8 @@ Description:
   Manage/remove accounts with: quarto publish accounts
 ```
 
+
+
 ## Focus: Shortcodes
 
 Quarto specific syntax to include content: <https://quarto.org/docs/authoring/shortcodes.html>
@@ -384,13 +422,15 @@ Quarto specific syntax to include content: <https://quarto.org/docs/authoring/sh
 ```{.markdown}
 Let's add some sample image ! 
 
-{{{< placeholder >}}}
+![A caption]({{{< placeholder >}}})
 ```
 :::
 ::: {.column width="50%"}
+::: {.illustration}
 Let's add some sample image ! 
 
-{{< placeholder >}}
+![A caption]({{< placeholder >}})
+:::
 :::
 :::
 
@@ -401,7 +441,7 @@ Part of what is extendable with [Quarto Extension](https://quarto.org/docs/exten
 *Organizing content as a project to gain project's features and enhanced outputs*
 
 ::: columns
-::: {.column .make-smaller style="padding-top: 2em"}
+::: {.column .make-smaller style="padding-top: 1em"}
 ``` {.yaml filename="_quarto.yml (simple website)"}
 project:
   type: website
@@ -424,7 +464,7 @@ format:
 freeze: auto
 ```
 :::
-::: {.column .make-smaller}
+::: {.column .make-smaller style="padding-top: 1em"}
 ``` {.yaml filename="_quarto.yml (simple book)"}
 project:
   type: book
@@ -449,14 +489,25 @@ format:
 :::
 :::
 
-## Learning More {.smaller}
+## Learning More
 
-#### Slides: <https://cderv.github.io/user2024-quarto-talk {.bottom-pad}
+::: {.callout appearance='simple'}
+
+This presentation aimed to give you a taste of what Quarto can do and a broad overview of its features.
+
+Follow other talks at useR! 2024 to learn more about Quarto, and our resources below.
+
+:::
+
+
+#### Resources {.bottom-pad}
 
 -   Getting started: <https://quarto.org/docs/get-started/>
 
 -   User guide: <https://quarto.org/docs/guide/>
 
 -   Awesome Quarto: <https://github.com/mcanouil/awesome-quarto>
+
+#### Slides: <https://cderv.github.io/user2024-quarto-talk> {.top-pad}
 
 #### Questions? {.top-pad}
