@@ -190,7 +190,7 @@ ggplot(penguins) + aes(x = bill_length_mm, y = bill_depth_mm, color = species) +
 ````{.markdown code-line-numbers="|3-4|10-12"}
 ---
 title: Hello penguins!
-output: html
+format: html
 toc: true
 ---
 
