@@ -22,7 +22,7 @@ README.md: _README.qmd
 render: index.html
 
 index.html: index.qmd
-		$(RENDER_CMD)
+		$(RENDER_CMD) $@
 
 preview:
 		$(PREVIEW_CMD)
