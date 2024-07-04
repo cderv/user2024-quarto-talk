@@ -438,7 +438,19 @@ Part of what is extendable with [Quarto Extension](https://quarto.org/docs/exten
 
 ## Quarto Projects
 
+> A Quarto Project is a directory that contains a file called _quarto.yml.
+
 *Organizing content as a project to gain project's features and enhanced outputs*
+
+- Projects have a type (website, book, manuscript, ...) driving behaviors and specific features
+- Shared Metadata from Project to sub-folder level
+- Reproducibility with computations can be controlled (cache, freeze)
+- Pre and Post render scripts can be added
+- Project Profile for distinct project behavior 
+
+## Quarto Projects
+
+Configurations examples
 
 ::: columns
 ::: {.column .make-smaller style="padding-top: 1em"}
