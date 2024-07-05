@@ -36,12 +36,15 @@ execute:
 ![[Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by Allison Horst.]{.small-cap}](images/horst_quarto_schematic.png){fig-alt="A schematic representing the multi-language input (e.g. Python, R, Observable, Julia) and multi-format output (e.g. PDF, html, Word documents, and more) versatility of Quarto." fig-align="center"}
 
 ::: notes
+
 Just like R Markdown you can weave together narrative text and code to produce elegantly formatted output as documents, web pages, blog posts, books and more.
 
 -   Consistent implementation of attractive and handy features across outputs: tabsets, code-folding, syntax highlighting, etc.
 -   More accessible defaults as well as better support for accessibility
 -   Guardrails, particularly helpful for new learners: YAML completion, informative syntax errors, etc.
 -   Support for other languages like Python, Julia, Observable, and more via Jupyter engine for executable code chunks.
+
+Next in presentation -> broad overview of Quarto and its feature. 
 :::
 
 ## Why Quarto?
@@ -158,6 +161,14 @@ Quarto integrates with other tools.
 ::: footer
 :::
 
+::: notes
+
+- Same workflow logic than R Markdown: Engine + Convertion
+- knitr / rmarkdown is used for R code cells then Pandoc for convertion. 
+- Quarto is tweaking several parts of those steps to bring Scientific markdown features, and great computational document experience
+- Same for Jupyter
+:::
+
 ## Quarto Syntax {auto-animate="true" auto-animate-easing="ease-out"}
 
 ::: {data-id="text1"}
@@ -180,6 +191,14 @@ ggplot(penguins) + aes(x = bill_length_mm, y = bill_depth_mm, color = species) +
   geom_point() + labs(x = "Bill length (mm)", y = "Bill depth (mm)")
 ```
 ````
+:::
+
+::: notes
+
+- Quarto syntax is very similar to R Markdown syntax with slight differences
+- YAML header to set configuration for quarto
+- Cell options to set configuration for engines 
+
 :::
 
 ## Quarto Syntax {auto-animate="true" auto-animate-easing="ease-out"}
@@ -208,16 +227,15 @@ ggplot(penguins) + aes(x = bill_length_mm, y = bill_depth_mm, color = species) +
 ````
 :::
 ::: notes
-For R, Quarto still uses Knitr under the hood.
 
-Same workflow from Markdown +
+- A different key for output format, which are no more R function. Closer to Pandoc default way of working, and so more compatible
+- A different way to set options for code chunks, with a multiline syntax using in-YAML configurations. 
+  - Because it is a broader syntax for engines, and also more compatible with Pandoc own specification
 
-Consequently, ***the vast majority of existing Rmd files*** can be rendered unmodified.
+- For R, Quarto still uses Knitr under the hood.
+- Consequently, ***the vast majority of existing Rmd files*** can be rendered unmodified.
+
 :::
-
-# Elevating R Markdown ? {visibility="hidden"}
-
-![](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3hzNzg3dWZiY3c4OHc4bGZkZHBuZHI1ZGN6YnlyYnVuYnFlam85cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6MbjqM1mUsaah7W0/giphy.gif){.nostretch width="70%"}
 
 ## Quarto formats
 
@@ -265,6 +283,10 @@ Multiple fresh polished formats, [built-in]{.hl}, with consistent syntax and fea
 |                  |                                                                               |                                                                              |
 |                  |                                                                               | [word_document2](https://bookdown.org/yihui/bookdown/a-single-document.html) |
 +------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+| Advanced Layout  | [Quarto Article Layout](https://quarto.org/docs/authoring/article-layout.html)| [tufte](https://bookdown.org/yihui/rmarkdown/tufte-handouts.html)            |
+|                  |                                                                               |                                                                              |
+|                  |                                                                               | [distill](https://rstudio.github.io/distill/figures.html)                    |
++------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
 | Websites & Blogs | [Quarto Websites](https://quarto.org/docs/websites/)                          | [blogdown](https://pkgs.rstudio.com/blogdown/)                               |
 |                  |                                                                               |                                                                              |
 |                  | [Quarto Blogs](https://quarto.org/docs/websites/website-blog.html)            | [distill](https://pkgs.rstudio.com/distill/)                                 |
@@ -275,13 +297,14 @@ Multiple fresh polished formats, [built-in]{.hl}, with consistent syntax and fea
 +------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
 | Dashboards       | [Quarto Dashboards](https://quarto.org/docs/dashboards/)                      | [flexdashboard](https://pkgs.rstudio.com/flexdashboard/)                     |
 +------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-| Advanced Layout  | [Quarto Article Layout](https://quarto.org/docs/authoring/article-layout.html)| [tufte](https://bookdown.org/yihui/rmarkdown/tufte-handouts.html)            |
-|                  |                                                                               |                                                                              |
-|                  |                                                                               | [distill](https://rstudio.github.io/distill/figures.html)                    |
-+------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
 
 ::: notes
-Some features requires specific R packages and specific syntax.
+Important : 
+- Built-in Quarto
+  - Some features requires specific R packages and specific syntax.
+- Fresh new format (HTML 5, boostrap 5, Typst for PDF, ...)
+
+Next, let's focus on some of the features that make Quarto unique.
 :::
 
 ::: footer
@@ -291,7 +314,7 @@ Some features requires specific R packages and specific syntax.
 
 [Quarto theme](https://quarto.org/docs/output-formats/html-themes.html) files are based on SCSS for all HTML output formats (shared by HTML and RevealJS slides, extendable to work with anything).
 
-Based on core variables defined by [bslib](https://rstudio.github.io/bslib/) (so fully compatible with Shiny, Flexdashboard, & R Markdown themes).
+For boostrap document, based on core variables defined by [bslib](https://rstudio.github.io/bslib/) (so fully compatible with Shiny, Flexdashboard, & R Markdown themes).
 
 :::::::::::::::::::: columns
 ::: {.column width="\"50%"}
@@ -319,7 +342,7 @@ format:
 ```
 
 :::
-:::::::::::::::::::: 
+::::::::::::::::::::
 
 
 ::: footer
