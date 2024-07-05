@@ -412,7 +412,9 @@ gt(temps) |>
 
 Integrated `quarto publish` command that target a variety of services
 
-```{.bash .make-smaller code-line-numbers='12-18'}
+::: {.make-smaller }
+
+```{.bash code-line-numbers='12-18'}
 > quarto publish --help
 
 Usage:   quarto publish [provider] [path]
@@ -436,7 +438,7 @@ Description:
   Manage/remove accounts with: quarto publish accounts
 ```
 
-
+:::
 
 ## Focus: Shortcodes
 
@@ -449,6 +451,8 @@ Let's add some sample image !
 
 ![A caption]({{{< placeholder >}}})
 ```
+
+`placeholder` is one of the [built-in shortcodes](https://quarto.org/docs/extensions/shortcodes.html#built-in-shortcodes)
 :::
 ::: {.column width="50%"}
 ::: {.illustration}
@@ -459,7 +463,7 @@ Let's add some sample image !
 :::
 :::
 
-Part of what is extendable with [Quarto Extension](https://quarto.org/docs/extensions/)
+Shortcodes is among what is extensible using [Quarto Extensions](https://quarto.org/docs/extensions/)
 
 ## Quarto Projects
 
@@ -468,7 +472,7 @@ Part of what is extendable with [Quarto Extension](https://quarto.org/docs/exten
 *Organizing content as a project to gain project's features and enhanced outputs*
 
 - Projects have a type (website, book, manuscript, ...) driving behaviors and specific features
-- Shared Metadata from Project to sub-folder level
+- Shared metadata from project to sub-folder level
 - Reproducibility with computations can be controlled (cache, freeze)
 - Pre and Post render scripts can be added
 - Project Profile for distinct project behavior 
@@ -544,7 +548,5 @@ Follow other talks at useR! 2024 to learn more about Quarto, and our resources b
 -   User guide: <https://quarto.org/docs/guide/>
 
 -   Awesome Quarto: <https://github.com/mcanouil/awesome-quarto>
-
-#### Slides: <https://cderv.github.io/user2024-quarto-talk> {.top-pad}
 
 #### Questions? {.top-pad}
