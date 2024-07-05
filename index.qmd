@@ -25,6 +25,8 @@ execute:
 
 ## What is Quarto?
 
+**An open-source, scientific and technical publishing system**
+
 *Quarto is the next generation of R Markdown*
 
 - it **unifies** and **improves** the R Markdown ecosystem

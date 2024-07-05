@@ -22,7 +22,7 @@ README.md: _README.qmd
 render: index.html
 
 index.html: index.qmd
-		$(RENDER_CMD) $@
+		$(RENDER_CMD) $<
 
 preview:
 		$(PREVIEW_CMD)
@@ -36,8 +36,8 @@ clean: clean-output clean-freeze clean-print
 clean-output:
 ifeq ($(OS),Windows_NT)
 		$(PWSH_CMD) "Remove-Item -Force index*.html"
-		$(PWSH_CMD) "Remove-Item -Recurse -Force index_files"
-		$(PWSH_CMD) "Remove-Item -Recurse -Force index_cache"
+		$(PWSH_CMD) "if (Test-Path index_files) {Remove-Item -Recurse -Force index_files}"
+		$(PWSH_CMD) "if (Test-Path index_cache) {Remove-Item -Recurse -Force index_cache}"
 else
 		rm index*.html
 		rm -rf index_files
@@ -62,7 +62,7 @@ print: slides-full.pdf
 
 slides-full.pdf: index.html
 ifeq ($(OS),Windows_NT)
-		$(PWSH_CMD) "docker run --rm -t -v .:/slides astefanutti/decktape -s 1280x720 generic /slides/$< $@""
+		$(PWSH_CMD) "docker run --rm -t -v .:/slides astefanutti/decktape -s 1280x720 generic /slides/$< $@"
 else
 	docker run --rm -t -v .:/slides astefanutti/decktape -s 1280x720 generic /slides/$< $@
 endif
