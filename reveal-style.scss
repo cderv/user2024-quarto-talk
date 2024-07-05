@@ -6,9 +6,9 @@
 
 $font-family-sans-serif: "Atkinson Hyperlegible", sans-serif;
 $font-family-monospace: "Source Code Pro", monospace;
-$presentation-heading-color: #2568B0;
-$link-color: #c78d22;
-$perso-highlight-color: #69a1b4;
+$presentation-heading-color: #356fb6;
+$link-color: #76ccd2;
+$perso-highlight-color: #2ebdc2;
 $hover-color: lighten($link-color, 10%);
 $code-block-font-size: 0.7em;
 $presentation-h2-font-size: 1.4em !default;
@@ -180,5 +180,27 @@ section#diagrams {
 .inherit-ul {
   .columns .column ul {
     display: inherit;
+  }
+}
+
+
+// Move "hamburger" back left
+
+.reveal .slide-menu-button {
+  position: fixed;
+  top: unset;
+  right: unset;
+  bottom: 6px;
+  left: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  pointer-events: none;
+}
+
+// Hide logo on first slide 
+.reveal #title-slide {
+  .slide-logo {
+    display: none;
   }
 }

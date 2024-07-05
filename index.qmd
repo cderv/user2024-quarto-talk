@@ -1,8 +1,4 @@
 ---
-title: "Elevating R Markdown with Quarto"
-subtitle: useR 2024
-author: "Christophe Dervieux"
-institute: "Posit PBC"
 date: 07/09/2024
 format:
   clean-revealjs:
@@ -17,11 +13,32 @@ format:
     multiplex: true
     include-after-body: 
       - revealjs-tweak.html
+    logo: images/useR-logo.png
 revealjs-plugins:
   - attribution
 execute: 
   cache: true
 ---
+  
+## {#title-slide .quarto-title-block .center}
+
+```{=html}
+<h1 class='title'>Quarto</h1>
+<p class='subtitle'> Elevating R Markdown for Advanced Publishing</p>
+```
+
+![](images/useR-logo.png){.absolute bottom='35px' right='100px' width='50%'}
+
+::: {.quarto-title-authors}
+::: {.quarto-title-author}
+::: {.quarto-title-author-name}
+Christophe Dervieux
+`<p class="quarto-title-affiliation">Posit PBC</p>`{=html}
+:::
+:::
+:::
+
+{{< meta date >}}
 
 ## What is Quarto?
 
