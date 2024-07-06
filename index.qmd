@@ -11,7 +11,7 @@ format:
     slide-number: true
     mermaid-format: png
     preview-links: auto
-    multiplex: true
+    multiplex: false
     include-after-body: 
       - revealjs-tweak.html
     logo: images/useR-logo.png
