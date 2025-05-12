@@ -428,7 +428,7 @@ gt(temps) |>
 
 ## Focus: Publishing
 
-Integrated `quarto publish` command that target a variety of services
+Integrated `quarto publish` command that targets a variety of services
 
 ::: {.make-smaller }
 
@@ -489,6 +489,11 @@ Shortcodes is among what is extensible using [Quarto Extensions](https://quarto.
 
 *Organizing content as a project to gain project's features and enhanced outputs*
 
+```{.bash .top-pad .bottom-pad}
+# from project root
+quarto render
+```
+
 - Projects have a type (website, book, manuscript, ...) driving behaviors and specific features
 - Shared metadata from project to sub-folder level
 - Reproducibility with computations can be controlled (cache, freeze)
@@ -497,7 +502,7 @@ Shortcodes is among what is extensible using [Quarto Extensions](https://quarto.
 
 ## Quarto Projects
 
-Configurations examples
+Examples of project's configurations
 
 ::: columns
 ::: {.column .make-smaller style="padding-top: 1em"}
