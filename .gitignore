@@ -10,4 +10,5 @@
 .Rproj.user/
 .Rhistory/
 /*.html
+!revealjs-tweak.html
 /*-speaker.html

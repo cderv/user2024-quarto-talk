@@ -1,0 +1,32 @@
+<script type="text/javascript">
+  Reveal.on('ready', (event) => {
+    if (event.indexh === 0) {
+        document.querySelector("div.has-logo > img.slide-logo").style.display = "none";
+    }
+    // tweak r-vtack with image
+    var slides = Reveal.getSlidesElement();
+    slides.querySelectorAll('div.r-vstack').forEach((vstack) => {
+      // check all chidren is a p tag
+      var isAllP = Array.from(vstack.children).every((child) => child.tagName === 'P');
+      // check all children of childre is an img tag
+      var isAllImg = Array.from(vstack.children).every((child) => Array.from(child.children).every((child) => child.tagName === 'IMG'));
+      if (isAllP && isAllImg) {
+        // move all img to the root of vstack, and remove p
+        Array.from(vstack.children).forEach((child) => {
+          Array.from(child.children).forEach((img) => {
+            vstack.appendChild(img);
+          });
+          vstack.removeChild(child);
+        });
+      }
+    });
+  });
+  Reveal.addEventListener('slidechanged', (event) => {
+    if (event.indexh === 0) {
+      document.querySelector("div.has-logo > img.slide-logo").style.display = "none";
+    }
+    if (event.indexh === 1) { 
+      document.querySelector("div.has-logo > img.slide-logo").style.display = null;
+    }
+  });
+</script>
